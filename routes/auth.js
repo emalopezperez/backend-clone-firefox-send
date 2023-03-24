@@ -2,17 +2,17 @@ const express = require("express")
 const router = express.Router()
 const authControllers = require("../controllers/authControllers")
 const { check } = require('express-validator');
+const auth = require("../middleware/auth")
 
 router.post("/",
   [
-    check('name', "El nombre es obligatorio").not().isEmpty(),
     check('email', "Agrega email valido").isEmail(),
-    check('password', "El password debe ser de al menos 6 caracteres").isLength({ min: 6 })
+    check('password', "El password no puede ir vacio").not().isEmpty()
   ],
   authControllers.autenticarUsuario)
 
 router.get("/",
-
+auth,
 authControllers.usuarioAutenticado
 )
 
