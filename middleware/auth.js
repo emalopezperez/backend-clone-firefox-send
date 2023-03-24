@@ -5,16 +5,13 @@ module.exports = (req, res, next) => {
   const authHeader = req.get('Authorization')
 
   if (authHeader) {
-
     const token = authHeader.split(' ')[1]
-
     try {
       const user = jwt.verify(token, process.env.JWRSECRET)
-      
-      res.json({ user  })
-
+      req.user = user
     } catch (err) {
-      console.log('error')
+      console.log(err);
+      console.log('JWT no valido');
     }
   }
 
