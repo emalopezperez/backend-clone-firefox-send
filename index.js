@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000
 app.use(express.json())
 
 app.use("/api/users", require("./routes/users"))
+app.use("/api/auth", require("./routes/auth"))
 
 app.listen(PORT, (req, res) => {
   console.log("servidor levantado en el porto 300")
