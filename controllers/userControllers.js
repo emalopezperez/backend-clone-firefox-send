@@ -1,7 +1,15 @@
 const UserScheme = require("../models/Usuario");
 const bcrypt = require('bcrypt');
+const { validationResult} = require('express-validator');
 
 exports.nuevoUsuario = async (req, res) => {
+
+  //Mostrar mensajes de error express validator
+  const errores = validationResult(req)
+    if(!errores.isEmpty()){
+      return res.status(400).json({errores: errores.array()})
+    }
+  
   try {
     const { email, password } = req.body;
 
