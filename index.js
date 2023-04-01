@@ -14,7 +14,7 @@ app.use("/api/links", require("./routes/links"))
 app.use("/api/files", require("./routes/files"))
 
 app.listen(PORT, (req, res) => {
-  console.log("servidor levantado en el porto 300")
+  console.log("servidor levantado en el puerto 300")
 })
 
 dbConnect() // Conecta a la base de datos MongoDB

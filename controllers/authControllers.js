@@ -22,8 +22,6 @@ exports.autenticarUsuario = async (req, res, next) => {
 
   if (bcrypt.compareSync(String(password), String(user.password))) {
 
-    console.log(user)
-
     //Crear jwt
     const token = jwt.sign({
       id: user._id,
